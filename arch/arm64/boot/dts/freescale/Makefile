@@ -132,6 +132,7 @@ dtb-$(CONFIG_ARCH_MXC) += imx8mp-var-som-symphony-2nd-ov5640.dtb \
 			  imx8mp-var-dart-dt8mcustomboard-basler-isi0.dtb \
 			  imx8mp-var-som-symphony-basler-isp0.dtb \
 			  imx8mp-var-som-symphony-basler-isp0-m7.dtb \
+			  imx8mp-evk-root.dtb \
 			  imx8mp-var-som-symphony.dtb \
 			  imx8mp-var-som-symphony-root.dtb \
 			  imx8mp-var-dart-dt8mcustomboard-legacy.dtb \
