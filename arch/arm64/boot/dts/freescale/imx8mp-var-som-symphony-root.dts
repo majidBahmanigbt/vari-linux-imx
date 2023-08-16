@@ -8,16 +8,6 @@
 
 #include "imx8mp-var-som-symphony.dts"
 
-// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-/*
- * Copyright 2020 NXP
- * Copyright 2020 - 2023 Variscite
- */
-
-/dts-v1/;
-
-#include "imx8mp-var-som-symphony.dts"
-
 / {
 	model = "Variscite VAR-SOM-MX8M-PLUS Jailhouse Root on Symphony-Board";
 
