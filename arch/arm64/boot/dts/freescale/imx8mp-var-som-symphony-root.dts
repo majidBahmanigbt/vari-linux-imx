@@ -18,11 +18,11 @@
 			compatible = "shared-dma-pool";
 			reusable;
 			size = <0 0x8000000>;
-			alloc-ranges = <0 0x40000000 0 0x6fc00000>;
+			alloc-ranges = <0 0x40000000 0 0x80000000>;
 			linux,cma-default;
 		};
 
-		jh_reserved: jh@fdc00000 {
+		jh_reserved: jh@fd700000 {
 			no-map;
 			reg = <0 0xfdc00000 0x0 0x400000>;
 		};
@@ -42,7 +42,7 @@
 			reg = <0 0xfd900000 0x0 0x00100000>;
 		};
 
-		pci_reserved: pci@fd700000 {
+		pci_reserved: pci@fdc00000 {
 			no-map;
 			reg = <0 0xfd700000 0x0 0x00200000>;
 		};
