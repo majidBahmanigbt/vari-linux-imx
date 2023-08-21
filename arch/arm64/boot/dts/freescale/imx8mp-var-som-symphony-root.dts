@@ -42,9 +42,9 @@
 			reg = <0 0xfd900000 0x0 0x00100000>;
 		};
 
-		pci_reserved: pci@fe000000 {
+		pci_reserved: pci@fd700000 {
 			no-map;
-			reg = <0 0xfe000000 0x0 0x00200000>;
+			reg = <0 0xfd700000 0x0 0x00200000>;
 		};
 
 		inmate_reserved: inmate@c0000000 {
