@@ -19,13 +19,6 @@
 	/delete-property/ compatible;
 };
 
-&clk {
-	init-on-array = <IMX8MP_CLK_USDHC3_ROOT
-			 IMX8MP_CLK_NAND_USDHC_BUS
-			 IMX8MP_CLK_HSIO_ROOT
-			 IMX8MP_CLK_UART4_ROOT>;
-};
-
 &{/busfreq} {
 	status = "disabled";
 };
@@ -67,37 +60,32 @@
 	alloc-ranges = <0 0x40000000 0 0x60000000>;
 };
 
-&iomuxc {
-	pinctrl_uart4: uart4grp {
-		fsl,pins = <
-			MX8MP_IOMUXC_UART4_RXD__UART4_DCE_RX	0x140
-			MX8MP_IOMUXC_UART4_TXD__UART4_DCE_TX	0x140
-		>;
-	};
+&clk {
+	init-on-array = <IMX8MP_CLK_NAND_USDHC_BUS
+			 IMX8MP_CLK_USDHC2_ROOT
+			 IMX8MP_CLK_UART3_ROOT>;
 };
 
-&usdhc3 {
+/* Disable uart3 from host */
+&uart3 {
 	status = "disabled";
 };
 
+/* Use uart4 device to initialize uart3 pinctrl */
 &uart4 {
-	/delete-property/ dmas;	
-	/delete-property/ dma-names;
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_uart4>;
+	pinctrl-0 = <&pinctrl_uart4>, <&pinctrl_uart3>;
+};
+
+/* Disable SD Card from host */
+&usdhc2 {
 	status = "disabled";
 };
 
-&uart2 {
-	/* uart4 is used by the 2nd OS, so configure pin and clk */
-	pinctrl-0 = <&pinctrl_uart2>, <&pinctrl_uart4>;
-	assigned-clocks = <&clk IMX8MP_CLK_UART4>;
-	assigned-clock-parents = <&clk IMX8MP_CLK_24M>;
-};
-
-&usdhc2 {
+/* Use EMMC device to initialize SD Card pinctrl and power */
+&usdhc3 {
 	pinctrl-0 = <&pinctrl_usdhc3>, <&pinctrl_usdhc2>, <&pinctrl_usdhc2_gpio>;
-	pinctrl-1 = <&pinctrl_usdhc3>, <&pinctrl_usdhc2_100mhz>, <&pinctrl_usdhc2_gpio>;
-	pinctrl-2 = <&pinctrl_usdhc3>, <&pinctrl_usdhc2_200mhz>, <&pinctrl_usdhc2_gpio>;
+	pinctrl-1 = <&pinctrl_usdhc3_100mhz>, <&pinctrl_usdhc2>, <&pinctrl_usdhc2_gpio>;
+	pinctrl-2 = <&pinctrl_usdhc3_200mhz>, <&pinctrl_usdhc2>, <&pinctrl_usdhc2_gpio>;
+	vmmc-supply = <&reg_usdhc2_vmmc>;
 };
 
