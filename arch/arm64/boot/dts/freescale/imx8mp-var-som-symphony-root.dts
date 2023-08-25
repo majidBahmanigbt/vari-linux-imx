@@ -66,6 +66,15 @@
 			 IMX8MP_CLK_UART3_ROOT>;
 };
 
+&iomuxc {
+	pinctrl_uart4: uart4grp {
+		fsl,pins = <
+			MX8MP_IOMUXC_UART4_RXD__UART4_DCE_RX	0x140
+			MX8MP_IOMUXC_UART4_TXD__UART4_DCE_TX	0x140
+		>;
+	};
+};
+
 /* Disable uart3 from host */
 &uart3 {
 	status = "disabled";
