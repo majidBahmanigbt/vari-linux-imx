@@ -170,6 +170,10 @@
 	status = "okay";
 };
 
+&gic {
+	status = "disabled";
+};
+
 &eqos {
 	mdio {
 		ethphy1: ethernet-phy@5 {
